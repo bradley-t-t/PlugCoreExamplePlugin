@@ -38,11 +38,20 @@ public class MyPremiumPlugin extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        if (!PlugCoreAPI.requireAuthorization(this)) {
-            return;
+        try {
+            if (!PlugCoreAPI.requireAuthorization(this)) {
+                getServer().getPluginManager().disablePlugin(this);
+                return;
+            }
+
+            getLogger().info("PlugCoreExamplePlugin enabled and authorized!");
+        } catch (NoClassDefFoundError e) {
+            getLogger().severe("PlugCore not found! Download from https://plugcore.io");
+            getServer().getPluginManager().disablePlugin(this);
+        } catch (Exception e) {
+            getLogger().severe("Authorization error: " + e.getMessage());
+            getServer().getPluginManager().disablePlugin(this);
         }
-        
-        getLogger().info("MyPremiumPlugin enabled and authorized!");
     }
 }
 ```
@@ -264,4 +273,3 @@ A: Yes, you need to list your plugin on plugcore.io for the validation system to
 ---
 
 **Developed by Trenton Taylor | plugcore.io | © 2025**
-
