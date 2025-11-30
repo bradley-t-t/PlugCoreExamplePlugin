@@ -7,35 +7,13 @@ public final class PlugCoreExamplePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if (!PlugCoreAPI.isServerLinked()) {
-            getLogger().warning("Server not linked to PlugCore!");
-            disablePlugin();
+        if (!PlugCoreAPI.requireAuthorization(this)) {
+            getServer().getPluginManager().disablePlugin(this);
+            getLogger().info("PlugCoreExamplePlugin disabled on post-load.");
             return;
         }
 
-        checkAuthorization();
-    }
-
-    private void checkAuthorization() {
-        PlugCoreAPI.isPluginAuthorized("PlugCoreExamplePlugin").thenAccept(authorized -> {
-            if (!authorized) {
-                getLogger().severe("Not authorized! This plugin must be purchased from plugcore.io");
-                disablePlugin();
-            } else {
-                getLogger().info("Authorization verified! PlugCoreExamplePlugin is now active.");
-                loadPlugin();
-            }
-        });
-    }
-
-    private void loadPlugin() {
-        getLogger().info("PlugCoreExamplePlugin enabled successfully!");
-    }
-
-    private void disablePlugin() {
-        getServer().getScheduler().runTask(this, () -> {
-            getServer().getPluginManager().disablePlugin(this);
-        });
+        getLogger().info("PlugCoreExamplePlugin enabled and authorized!");
     }
 
     @Override
