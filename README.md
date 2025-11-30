@@ -43,7 +43,6 @@ public class MyPremiumPlugin extends JavaPlugin {
                 getServer().getPluginManager().disablePlugin(this);
                 return;
             }
-
             getLogger().info("PlugCoreExamplePlugin enabled and authorized!");
         } catch (NoClassDefFoundError e) {
             getLogger().severe("PlugCore not found! Download from https://plugcore.io");
