@@ -6,7 +6,7 @@
 
     <groupId>io.plugcore</groupId>
     <artifactId>PlugCoreExamplePlugin</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <name>PlugCoreExamplePlugin</name>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>com.github.bradley-t-t</groupId>
             <artifactId>PlugCore</artifactId>
-            <version>Latest</version>
+            <version>1.0.8</version>
         </dependency>
     </dependencies>
 </project>
