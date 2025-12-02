@@ -1,6 +1,6 @@
 package io.plugcore.plugCoreExamplePlugin;
 
-import io.plugcore.plugCore.PlugCore;
+import io.plugcore.plugCore.api.PlugCoreAPI;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PlugCoreExamplePlugin extends JavaPlugin {
@@ -8,7 +8,7 @@ public final class PlugCoreExamplePlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         try {
-            PlugCore plugCore = PlugCore.getInstance();
+            PlugCoreAPI plugCore = PlugCoreAPI.getInstance();
             if (plugCore == null || !plugCore.isServerLinked()) {
                 getServer().getPluginManager().disablePlugin(this);
             }

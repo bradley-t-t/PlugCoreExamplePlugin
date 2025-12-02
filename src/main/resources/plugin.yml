@@ -1,5 +1,5 @@
 name: PlugCoreExamplePlugin
-version: 'Plugin-1.0.0'
+version: 'Plugin-1.0.3'
 main: io.plugcore.plugCoreExamplePlugin.PlugCoreExamplePlugin
 api-version: '1.21'
 load: STARTUP
