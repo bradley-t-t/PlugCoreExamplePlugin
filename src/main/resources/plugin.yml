@@ -1,9 +1,9 @@
 name: PlugCoreExamplePlugin
-version: '1.2.0'
+version: 'Plugin-1.0.0'
 main: io.plugcore.plugCoreExamplePlugin.PlugCoreExamplePlugin
 api-version: '1.21'
 load: STARTUP
 authors: [ Trenton ]
 description: Example plugin demonstrating PlugCore integration for license verification
 website: plugcore.io
-depend: [PlugCore]
+depend: [ PlugCore ]

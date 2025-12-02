@@ -7,22 +7,17 @@ public final class PlugCoreExamplePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getScheduler().runTaskLater(this, () -> {
-            try {
-                PlugCore.getValidationService().validateServerLinkSync();
-                getLogger().info("PlugCoreExamplePlugin enabled - authorization check scheduled.");
-            } catch (NoClassDefFoundError e) {
-                getLogger().severe("PlugCore not found! Download from https://plugcore.io");
-                getServer().getPluginManager().disablePlugin(this);
-            } catch (Exception e) {
-                getLogger().severe("Authorization error: " + e.getMessage());
+        try {
+            PlugCore plugCore = PlugCore.getInstance();
+            if (plugCore == null || !plugCore.isServerLinked()) {
                 getServer().getPluginManager().disablePlugin(this);
             }
-        }, 100L);
+        } catch (Exception e) {
+            getServer().getPluginManager().disablePlugin(this);
+        }
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("PlugCoreExamplePlugin disabled.");
     }
 }
