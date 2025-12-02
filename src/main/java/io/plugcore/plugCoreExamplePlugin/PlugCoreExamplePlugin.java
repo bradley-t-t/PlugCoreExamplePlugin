@@ -9,6 +9,7 @@ public final class PlugCoreExamplePlugin extends JavaPlugin {
     public void onEnable() {
         getServer().getScheduler().runTaskLater(this, () -> {
             try {
+                PlugCore.getValidationService().validateServerLinkSync();
                 getLogger().info("PlugCoreExamplePlugin enabled - authorization check scheduled.");
             } catch (NoClassDefFoundError e) {
                 getLogger().severe("PlugCore not found! Download from https://plugcore.io");
